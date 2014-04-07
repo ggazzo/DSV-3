@@ -1,0 +1,5 @@
+<root>
+    <gender _id="0" name="Masculino"/>
+    <gender _id="1" name="Feminino"/>
+    <gender _id="2" name="Neutro"/>
+</root>

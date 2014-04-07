@@ -1,0 +1,5 @@
+<root>
+    <pacient value="0" label="Pessoa 1"/>
+    <pacient value="1" label="Pessoa 2"/>
+    <pacient value="2" label="Pessoa 3"/>
+</root>
