@@ -35,7 +35,7 @@ class Login{
                 title Narrow Jumbotron Template for Bootstrap
                 //
                    Bootstrap core CSS 
-                link(href='/Framework/_css/bootstrap.min.css', rel='stylesheet')
+                link(href='./Framework/_css/bootstrap.min.css', rel='stylesheet')
                 //
                    Just for debugging purposes. Don't actually copy this line! 
                 //if lt IE 9
@@ -59,7 +59,7 @@ class Login{
         "
     	,__DIR__,
     	__CLASS__,
-    	"0.9.3");
+    	"0.9.6");
     }
 
 }

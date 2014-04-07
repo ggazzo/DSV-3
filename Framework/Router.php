@@ -4,6 +4,9 @@ class Router {
     private $default;
     private $className;
     public function add($path, $class = false){
+
+        $path = "/^\/".preg_replace("/(\/\*)/", "(/\w*)", $path)."/";
+        echo $path."\n";
         //Terminar isso aqui ideia é caso o path da url seja o mesmo nome da classe não precisar passar o nome.
         /*if(!$class){
             $class = "\Controller\".

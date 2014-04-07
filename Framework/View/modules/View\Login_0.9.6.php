@@ -16,7 +16,7 @@
       core CSS 
     </Bootstrap>
     -->
-    <link href='/Framework/_css/bootstrap.min.css' rel='stylesheet'>
+    <link href='./Framework/_css/bootstrap.min.css' rel='stylesheet'>
     <!--
     <Just>
       for debugging purposes. Don't actually copy this line! 
