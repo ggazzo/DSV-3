@@ -2,20 +2,34 @@
 namespace Controller;
 class GenericCrudController{
     public $model;
-    public function __construct(){
-        $this->model = "\\Model\\".ucfirst($this->model);
-    }
-    public function run($param,$m){
-        if(isset($_REQUEST[$this->model]['action'])||(!isset($m) || !$m))
-            $m = isset($_REQUEST[$this->model]['action'])? $_REQUEST[$this->model]['action'] : "LISTAR";
-        if($m == "LISTAR" && $this->id){
-            $m="GET";
-        }
-        unset($_REQUEST[$this->model]['action']);
+    public $id;
+	public $action;
+	public $userType;
+	private $req;
+
+	public function setAction($a){	
+		$this->action = $a;
+	}
+
+		public function __construct(){
+		$l = \Login::getInstance();
+		$this->userType = $l->userType();
+
+		
+		$this->model = "\\Model\\".ucfirst($this->model);		
+		$this->req = isset($_REQUEST[$this->model])?$_REQUEST[$this->model]:arraY();
+		if(isset($this->req['action'])||(!isset($this->action) || !$this->action))
+            $this->action = isset($this->req['action'])? $this->req['action'] : "LISTAR"; 		
+		$this->model = new $this->model();
+	}    
+    public function run(){
+		    
+		$m = $this->action;
+        unset($this->req['action']);	
+		
         $this->$m();
     }
-    public function LISTAR(){
-        $m = new $this->model();
+    public function LISTAR(){   
         $u = new \View\User();
 
     	// isso aqui é uma view mas eu queria testar esse render (:
@@ -23,11 +37,11 @@ class GenericCrudController{
             "ul.list-group
                 each val, index in scope['a']
                     li.list-group-item= val.name
-                        a.btn.btn-primary(href=\"/usuario/:GET/\" + val['_id'])  EDIT
-                        a.btn.btn-danger(href=\"/usuario/:DELETE/\" + val['_id'])  DELETE"
+                        a.btn.btn-primary(href=\"/usuario/GET/\" + val['_id'])  EDIT
+                        a.btn.btn-danger(href=\"/usuario/DELETE/\" + val['_id'])  DELETE"
     	,__DIR__,
     	__CLASS__,
-    	"0.8"),
+    	"0.9"),
     	array("a"=>$m->getAll()));
         $u->generate();
     }

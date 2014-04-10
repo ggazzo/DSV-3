@@ -31,8 +31,6 @@ class ModelGeneric {
                     
                 }
             }
-            
-            
         }
         return true;
     }
@@ -59,8 +57,11 @@ class ModelGeneric {
         );
         
     }
+    public function get($a = array()){		
+        return $this->database->find($a);
+    }
     public function getAll(){
-        return $this->database->find($this->filter);
+        return $this->get($this->filter);
     }
     public function save(){
         //salva 
@@ -89,7 +90,7 @@ class ModelGeneric {
           //  $this->database->insert($this->values);
         //}
     }
-    private function extend($arr){
+    public function extend($arr){
         if(count($this->filter))
             foreach($this->filter as $key => $val)
                 $arr[$key]= $val;

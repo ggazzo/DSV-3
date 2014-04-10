@@ -35,7 +35,7 @@ class GenericView{
                 title Narrow Jumbotron Template for Bootstrap
                 //
                    Bootstrap core CSS 
-                link(href='/Framework/_css/bootstrap.min.css', rel='stylesheet')
+                link(href='http://localhost/Nova%20pasta/DSV-3/Framework/_css/bootstrap.min.css', rel='stylesheet')
                 //
                    Just for debugging purposes. Don't actually copy this line! 
                 //if lt IE 9
@@ -51,7 +51,7 @@ class GenericView{
                   padding-top: 70px;
                 }
             body
-                .navbar.navbar-default.navbar-fixed-top(role='navigation')
+                .navbar.navbar-default(role='navigation')
                     .container
                         .navbar-header
                           button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -100,7 +100,7 @@ class GenericView{
         "
     	,__DIR__,
     	__CLASS__,
-    	"0.3");
+    	"0.7");
     }
 
 }

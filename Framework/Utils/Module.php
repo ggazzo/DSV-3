@@ -3,7 +3,7 @@
 	class Module{
 		static function _require($fonte,$path,$class,$name) {
 			
-			$pt = $path.'/modules/'.$class.'_'.$name.'.php';
+			$pt = $path.'/modules/'.str_replace("\\","_",$class).'_'.$name.'.php';
 			
 			if(!file_exists($pt)){
 				if(!is_dir($path.'/modules'))

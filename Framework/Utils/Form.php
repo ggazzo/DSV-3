@@ -101,8 +101,8 @@ class Form{
     }
     private function fk_getList($name){
         $html = "";
-        if(file_exists("{$_SERVER['DOCUMENT_ROOT']}/cliente/$name.xml")){
-            $xml = simplexml_load_file("{$_SERVER['DOCUMENT_ROOT']}/cliente/$name.xml");
+        if(file_exists("{$_SERVER['DOCUMENT_ROOT']}/Nova pasta/DSV-3/cliente/$name.xml")){
+            $xml = simplexml_load_file("{$_SERVER['DOCUMENT_ROOT']}/Nova pasta/DSV-3/cliente/$name.xml");
             $json = json_encode($xml);
             $array = json_decode($json,TRUE);
             $array = $array[$name];

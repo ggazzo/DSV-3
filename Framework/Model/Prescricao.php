@@ -17,6 +17,8 @@ class Prescricao extends ModelGeneric{
                             "observation"=>      array("type"=>"longText","params"=>"notnull"),
                             "date"=>            array("type"=>"date","params"=>"notnull")
                             );
-                            
+    public function getByPacient($id){		
+		return $this->get(array("pacient"=>$id));
+	}
 }
 ?>

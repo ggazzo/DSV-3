@@ -47,10 +47,10 @@ class Login{
                   script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
             body
                 .container
-                    .col-md-4.col-md-offset-4
+                    .col-md-3.col-md-offset-5
                         :php
                             \Utils\Message::generate('login');
-                        form.form-signin(role=form,method='POST')
+                        form.form-signin(role='form', method='POST')
                             h2.form-signin-heading Please sign in
                             input(type='hidden', name='login[action]', value='login').form-control
                             input(type='text', placeholder='Login', required='', autofocus='', name='login[username]').form-control
@@ -59,7 +59,7 @@ class Login{
         "
     	,__DIR__,
     	__CLASS__,
-    	"0.9.6");
+    	"0.9.8");
     }
 
 }

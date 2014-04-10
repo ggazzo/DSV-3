@@ -3,16 +3,16 @@ class Router {
     private $paths = array();
     private $default;
     private $className;
-    public function add($path, $class = false){
+    public function add($path, $class , $func){
 
-        $path = "/^\/".preg_replace("/(\/\*)/", "(/\w*)", $path)."/";
-        echo $path."\n";
+        $path = "/\/".preg_replace("/(\/\*)/", "\/(\w*)", $path)."/";        
         //Terminar isso aqui ideia é caso o path da url seja o mesmo nome da classe não precisar passar o nome.
         /*if(!$class){
             $class = "\Controller\".
         }*/
         $class = "\\Controller\\".$class;
         $this->path[$path] = $class;
+        $this->func[$path] = $func;
     }
     // classe de controle caso nenhuma url confira
     
@@ -21,14 +21,18 @@ class Router {
     }
     public function run($path){
         $tmp;
-        foreach($this->path as $key => $val){
-            //aplicar expressão regular
-            $class = $val[0];
-            preg_match($key, $path, $output_array);
+        foreach($this->path as $key => $val){            
+            $class = $val;
+			
+            preg_match($key, $path, $output_array);			
             if($output_array){
-                $tmp = new $class($output_array[4]);
-                $tmp->run(isset($output_array[4])?$output_array[4]:null,isset($output_array[3])?$output_array[3]:null);
-                return true;
+			
+				$callback =  $this->func[$key];
+                $controller = new $class();
+				array_shift($output_array);											
+				if(call_user_func_array($callback, array($controller,$output_array)) !== false){
+					return true;
+				};
             }
         }
         return false;        
