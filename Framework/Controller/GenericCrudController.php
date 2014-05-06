@@ -31,7 +31,7 @@ class GenericCrudController{
     }
     public function LISTAR(){   
         $u = new \View\User();
-
+$m = new $this->model();
     	// isso aqui é uma view mas eu queria testar esse render (:
     	$u->setArea("container", \Utils\Module::_require(
             "ul.list-group

@@ -25,7 +25,7 @@ class Form{
                 "").
         "<button type=\"submit\" class=\"btn btn-default\" name=\"\\".get_class($this->m)."[action]\"value=\"".((count($this->m->values) > 0)? 'update' : 'save')."\">".((count($this->m->values) > 0)? 'update' : 'save')."</button></form>";
     }
-    private function analizeELements($els){
+    private function analizeELements($els,$values){
         $html = "";
         foreach($els as $key => $val){
             if(isset($val['type'])){
@@ -34,19 +34,19 @@ class Form{
                     case 'password':
                     case 'date':
                     case 'number':
-                       $html .= $this->input($key,$val['type'],"");
+                       $html .= $this->input($key,$val['type'],$values[$key]);
                         break;
                     case 'boolean':
-                        $html .= $this->boolean($key,$val['type'],"");
+                        $html .= $this->boolean($key,$val['type'],$values[$key]);
                         break;
                     case 'fk':
-                        $html .= $this->fk($key,$val['type'],"");
+                        $html .= $this->fk($key,$val['type'],$values[$key]);
                         break;
                     case 'longText':
-                        $html .= $this->longText($key,$val['type'],"");
+                        $html .= $this->longText($key,$val['type'],$values[$key]);
                         break;
                     case 'array':
-                        $html .= $this->arr($key,$val['elements'],"");
+                        $html .= $this->arr($key,$val['elements'],$values[$key]);
                         break;
                     default:
                         $html .= "tipo ${key} não definido\n";
@@ -56,14 +56,13 @@ class Form{
         return $html;
         
     }
-    private function arr($name, $val){
+    private function arr($name, $val,$values){
         $html = "";
         
-        foreach($val as $key => $v){
-            
-            $html .= $this->analizeELements($v);
-            
-        }
+			foreach($values as $_v)
+				foreach($val as $key => $v)				
+					$html .= $this->analizeELements($v,$_v);			
+		
         return $html;
     }
     private function input($name,$type,$params){
