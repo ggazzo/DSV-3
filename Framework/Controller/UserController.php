@@ -16,6 +16,7 @@ class UserController extends GenericCrudController{
 	public function setId($a){	
 		$this->id = $a;
 	}
+
     public function __invoke(){	
 		if($this->userType == 2){ //medico			
 			parent::run();

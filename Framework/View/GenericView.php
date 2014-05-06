@@ -6,6 +6,7 @@ class GenericView{
     private $areas = array();
     private $scopes = array();
     public function getArea($a){
+	
         if(isset($this->areas[$a])){
             foreach($this->areas[$a] as $key => $val){
                 if($this->scopes[$a][$key]){

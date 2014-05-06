@@ -44,8 +44,12 @@ error_reporting(-1);
 			2º metodo
 			3º id da prescrição
 		*/
-        $r->add("prescricao/*/*",'PrescricaoController',function($controller , $args){
-			$l = Login::getInstance();			
+        $r->add("prescricao/user/*",'PrescricaoController',function($controller , $args){
+			$l = Login::getInstance();
+						// Lista prescrição do paciente						
+			$controller->setAction("listByUser");				
+			$controller->setUserId($args[0]);
+					$controller();
 		});		
 		/*
 			Tela que solicita o paciente
