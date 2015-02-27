@@ -1,4 +1,4 @@
-Welcome to StackEdit!
+:)
 ===================
 
 - instalar o [Arduino](http://arduino.cc/download_handler.php?f=/arduino-1.6.0-windows.exe)
