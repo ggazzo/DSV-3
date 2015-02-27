@@ -97,6 +97,8 @@ Verifica se as molinhas estão "apertadas, porém soltas" é assim mesmo, elas e
 Tem esse vídeo que explica muito bem como fazer (**não é IGUAL**) mas é parecido. Só ignora as partes que ele colocar o filamento pra sair e tal... 
 
 
+[Video](https://www.youtube.com/embed/ArvamVNCteY?feature=player_embedded)
+
 <iframe width="640" height="360" src="https://www.youtube.com/embed/ArvamVNCteY?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
 
 
